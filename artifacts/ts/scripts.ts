@@ -11,7 +11,12 @@ import {
   SignerProvider,
   HexString,
 } from "@alephium/web3";
+import { default as DestroyScriptJson } from "../Destroy.ral.json";
 import { default as WithdrawScriptJson } from "../Withdraw.ral.json";
+
+export const Destroy = new ExecutableScript<{ contract: HexString }>(
+  Script.fromJson(DestroyScriptJson, "", [])
+);
 
 export const Withdraw = new ExecutableScript<{
   token: HexString;

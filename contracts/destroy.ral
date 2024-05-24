@@ -1,0 +1,3 @@
+TxScript Destroy(contract: Foo) {
+    contract.destroy()
+}

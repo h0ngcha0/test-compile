@@ -1,0 +1,11 @@
+Contract Foo(owner: Address) {
+    enum ErrorCodes {
+        NotOwner = 0
+    }
+
+    @using(preapprovedAssets = false, assetsInContract = true, updateFields = false, checkExternalCaller = true)
+    pub fn destroy() -> () {
+        checkCaller!(callerAddress!() == owner, ErrorCodes.NotOwner)
+        destroySelf!(owner)
+    }
+}

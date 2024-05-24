@@ -9,6 +9,20 @@
     "ignoreCheckExternalCallerWarnings": false
   },
   "infos": {
+    "Destroy": {
+      "sourceFile": "destroy.ral",
+      "sourceCodeHash": "812badadd59dee003e27da0ae95fad36fe11c11916ee614a171fc53a52194b2a",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    },
+    "Foo": {
+      "sourceFile": "foo.ral",
+      "sourceCodeHash": "91cee30c03a4cda969617521e2b5fec469461a1d31d0d1bd2ef326aab6576ba7",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "ab6dbe32a68a1207a83b6f2494e3d576cdc70fa6d3282b9f569977f12b49e577",
+      "warnings": []
+    },
     "IFungibleToken": {
       "sourceFile": "../node_modules/@alephium/web3/std/fungible_token_interface.ral",
       "sourceCodeHash": "6809cb06fb20fa7edf529461998beeebd12b1636d439612cca2f84214dbf4a20",

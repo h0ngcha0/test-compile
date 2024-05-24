@@ -1,0 +1,45 @@
+{
+  "version": "v2.14.1",
+  "name": "Foo",
+  "bytecode": "010114010200000008d38e18691cb4ce00450c7bce00b0",
+  "codeHash": "ab6dbe32a68a1207a83b6f2494e3d576cdc70fa6d3282b9f569977f12b49e577",
+  "fieldsSig": {
+    "names": [
+      "owner"
+    ],
+    "types": [
+      "Address"
+    ],
+    "isMutable": [
+      false
+    ]
+  },
+  "eventsSig": [],
+  "functions": [
+    {
+      "name": "destroy",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": true,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": []
+    }
+  ],
+  "constants": [],
+  "enums": [
+    {
+      "name": "ErrorCodes",
+      "fields": [
+        {
+          "name": "NotOwner",
+          "value": {
+            "type": "U256",
+            "value": "0"
+          }
+        }
+      ]
+    }
+  ]
+}
