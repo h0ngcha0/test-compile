@@ -12,13 +12,8 @@ import {
   HexString,
 } from "@alephium/web3";
 import { default as WithdrawScriptJson } from "../Withdraw.ral.json";
-import { default as Withdraw2ScriptJson } from "../Withdraw2.ral.json";
 
 export const Withdraw = new ExecutableScript<{
   token: HexString;
   amount: bigint;
-}>(Script.fromJson(WithdrawScriptJson));
-export const Withdraw2 = new ExecutableScript<{
-  token: HexString;
-  amount: bigint;
-}>(Script.fromJson(Withdraw2ScriptJson));
+}>(Script.fromJson(WithdrawScriptJson, "", []));

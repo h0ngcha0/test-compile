@@ -1,7 +1,7 @@
 import { web3, Project, TestContractParams, addressFromContractId, AssetOutput, DUST_AMOUNT, hexToString } from '@alephium/web3'
 import { expectAssertionError, randomContractId, testAddress, testNodeWallet } from '@alephium/web3-test'
 import { deployToDevnet } from '@alephium/cli'
-import { TokenFaucet, TokenFaucetTypes, Withdraw, Withdraw2 } from '../artifacts/ts'
+import { TokenFaucet, TokenFaucetTypes, Withdraw } from '../artifacts/ts'
 
 describe('unit tests', () => {
   let testContractId: string
@@ -133,21 +133,10 @@ describe('integration tests', () => {
       const symbol = await faucet.methods.getSymbol()
       expect(symbol.returns).toEqual(Buffer.from('TF', 'utf8').toString('hex'))
 
+
       // Call `withdraw` function 5 times
       for (let i = 0; i < 5; i++) {
         await Withdraw.execute(signer, {
-          initialFields: { token: tokenId, amount: 1n },
-          attoAlphAmount: DUST_AMOUNT * 2n
-        })
-
-        const newState = await faucet.fetchState()
-        const newBalance = newState.fields.balance
-        expect(newBalance).toEqual(initialBalance - BigInt(i) - 1n)
-      }
-
-      // Call `withdraw2` function 5 times
-      for (let i = 5; i < 10; i++) {
-        await Withdraw2.execute(signer, {
           initialFields: { token: tokenId, amount: 1n },
           attoAlphAmount: DUST_AMOUNT * 2n
         })
