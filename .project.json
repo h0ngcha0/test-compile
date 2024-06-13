@@ -9,9 +9,23 @@
     "ignoreCheckExternalCallerWarnings": false
   },
   "infos": {
+    "Bar": {
+      "sourceFile": "bar.ral",
+      "sourceCodeHash": "9f319d59ebb992ef8a29c0e5f6d7fecd53d476701c9f28df2dc37bd1704ab834",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "e08e902ff4d896e8d38bd82947f2ab56793946006013376046b1b9c0a4df42db",
+      "warnings": []
+    },
     "Destroy": {
       "sourceFile": "destroy.ral",
       "sourceCodeHash": "8a5f14c5eac3ba1a3bc63b12efe550dd92a27d1aee5ab6eae18e5d05d8e2d4bd",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    },
+    "Foo": {
+      "sourceFile": "foo.ral",
+      "sourceCodeHash": "552d6c76a455a8ab12117e434245f3e76f40a46fb2b6cd1ac3e637d3f2a31f71",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
       "warnings": []
@@ -38,7 +52,7 @@
       "warnings": []
     },
     "Zag": {
-      "sourceFile": "foo.ral",
+      "sourceFile": "zag.ral",
       "sourceCodeHash": "00f50fecf6c23565223e7b4e2c4ed46779e37f44e7dc547331481a64a0bcccd0",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "ab6dbe32a68a1207a83b6f2494e3d576cdc70fa6d3282b9f569977f12b49e577",

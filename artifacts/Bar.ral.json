@@ -1,0 +1,43 @@
+{
+  "version": "v3.1.1",
+  "name": "Bar",
+  "bytecode": "02020e1c010000000103d341030341ce0002010000000103d3a8d68226ce0102",
+  "codeHash": "e08e902ff4d896e8d38bd82947f2ab56793946006013376046b1b9c0a4df42db",
+  "fieldsSig": {
+    "names": [
+      "value",
+      "otherVal"
+    ],
+    "types": [
+      "U256",
+      "U256"
+    ],
+    "isMutable": [
+      false,
+      false
+    ]
+  },
+  "eventsSig": [],
+  "functions": [
+    {
+      "name": "getValue",
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "U256"
+      ]
+    },
+    {
+      "name": "getOther",
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "U256"
+      ]
+    }
+  ],
+  "constants": [],
+  "enums": []
+}

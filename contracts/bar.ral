@@ -1,0 +1,5 @@
+Contract Bar(value: U256, otherVal: U256) extends Foo(value) {
+  pub fn getOther() -> U256 {
+    return otherVal
+  }
+}
