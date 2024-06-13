@@ -25,6 +25,9 @@ import {
   getContractEventsCurrentCount,
   TestContractParamsWithoutMaps,
   TestContractResultWithoutMaps,
+  SignExecuteContractMethodParams,
+  SignExecuteScriptTxResult,
+  signExecuteMethod,
   addStdIdToFields,
   encodeContractFields,
 } from "@alephium/web3";
@@ -38,6 +41,36 @@ export namespace FooTypes {
   };
 
   export type State = ContractState<Fields>;
+
+  export interface CallMethodTable {
+    destroy: {
+      params: Omit<CallContractParams<{}>, "args">;
+      result: CallContractResult<null>;
+    };
+  }
+  export type CallMethodParams<T extends keyof CallMethodTable> =
+    CallMethodTable[T]["params"];
+  export type CallMethodResult<T extends keyof CallMethodTable> =
+    CallMethodTable[T]["result"];
+  export type MultiCallParams = Partial<{
+    [Name in keyof CallMethodTable]: CallMethodTable[Name]["params"];
+  }>;
+  export type MultiCallResults<T extends MultiCallParams> = {
+    [MaybeName in keyof T]: MaybeName extends keyof CallMethodTable
+      ? CallMethodTable[MaybeName]["result"]
+      : undefined;
+  };
+
+  export interface SignExecuteMethodTable {
+    destroy: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+  }
+  export type SignExecuteMethodParams<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["params"];
+  export type SignExecuteMethodResult<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["result"];
 }
 
 class Factory extends ContractFactory<FooInstance, FooTypes.Fields> {
@@ -66,7 +99,7 @@ class Factory extends ContractFactory<FooInstance, FooTypes.Fields> {
         "testArgs"
       >
     ): Promise<TestContractResultWithoutMaps<null>> => {
-      return testMethod(this, "destroy", params);
+      return testMethod(this, "destroy", params, getContractByCodeHash);
     },
   };
 }
@@ -90,4 +123,28 @@ export class FooInstance extends ContractInstance {
   async fetchState(): Promise<FooTypes.State> {
     return fetchContractState(Foo, this);
   }
+
+  methods = {
+    destroy: async (
+      params?: FooTypes.CallMethodParams<"destroy">
+    ): Promise<FooTypes.CallMethodResult<"destroy">> => {
+      return callMethod(
+        Foo,
+        this,
+        "destroy",
+        params === undefined ? {} : params,
+        getContractByCodeHash
+      );
+    },
+  };
+
+  view = this.methods;
+
+  transact = {
+    destroy: async (
+      params: FooTypes.SignExecuteMethodParams<"destroy">
+    ): Promise<FooTypes.SignExecuteMethodResult<"destroy">> => {
+      return signExecuteMethod(Foo, this, "destroy", params);
+    },
+  };
 }
