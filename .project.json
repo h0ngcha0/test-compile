@@ -11,16 +11,9 @@
   "infos": {
     "Destroy": {
       "sourceFile": "destroy.ral",
-      "sourceCodeHash": "812badadd59dee003e27da0ae95fad36fe11c11916ee614a171fc53a52194b2a",
+      "sourceCodeHash": "8a5f14c5eac3ba1a3bc63b12efe550dd92a27d1aee5ab6eae18e5d05d8e2d4bd",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
-      "warnings": []
-    },
-    "Foo": {
-      "sourceFile": "foo.ral",
-      "sourceCodeHash": "91cee30c03a4cda969617521e2b5fec469461a1d31d0d1bd2ef326aab6576ba7",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "ab6dbe32a68a1207a83b6f2494e3d576cdc70fa6d3282b9f569977f12b49e577",
       "warnings": []
     },
     "IFungibleToken": {
@@ -42,6 +35,13 @@
       "sourceCodeHash": "52423580f02f5aab7050bfb9a14b497ea4bdcb10b3444483650f3dad8e0e5330",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
+      "warnings": []
+    },
+    "Zag": {
+      "sourceFile": "foo.ral",
+      "sourceCodeHash": "00f50fecf6c23565223e7b4e2c4ed46779e37f44e7dc547331481a64a0bcccd0",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "ab6dbe32a68a1207a83b6f2494e3d576cdc70fa6d3282b9f569977f12b49e577",
       "warnings": []
     }
   }

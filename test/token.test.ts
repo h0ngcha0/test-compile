@@ -1,7 +1,7 @@
 import { web3, TestContractParams, addressFromContractId, AssetOutput, DUST_AMOUNT, hexToString, ONE_ALPH } from '@alephium/web3'
 import { expectAssertionError, randomContractId, testAddress, testNodeWallet } from '@alephium/web3-test'
 import { deployToDevnet } from '@alephium/cli'
-import { Destroy, Foo, TokenFaucet, TokenFaucetTypes, Withdraw } from '../artifacts/ts'
+import { Destroy, Zag, TokenFaucet, TokenFaucetTypes, Withdraw } from '../artifacts/ts'
 
 describe('unit tests', () => {
   let testContractId: string
@@ -149,11 +149,11 @@ describe('integration tests', () => {
   it('should destroy on devnet', async () => {
     const signer = await testNodeWallet()
     const account = await signer.getSelectedAccount()
-    const deploymentResult = await Foo.deploy(signer, { initialFields: { owner: account.address } })
-    const fooContractId = deploymentResult.contractInstance.contractId
+    const deploymentResult = await Zag.deploy(signer, { initialFields: { owner: account.address } })
+    const zagContractId = deploymentResult.contractInstance.contractId
     const { balance: beforeBalance } = await signer.nodeProvider.addresses.getAddressesAddressBalance(account.address)
     const destroyResult = await Destroy.execute(signer, {
-      initialFields: { contract: fooContractId }
+      initialFields: { contract: zagContractId }
     })
     const destroyGasFee = BigInt(destroyResult.gasAmount) * BigInt(destroyResult.gasPrice)
     const { balance: afterBalance } = await signer.nodeProvider.addresses.getAddressesAddressBalance(account.address)

@@ -31,11 +31,11 @@ import {
   addStdIdToFields,
   encodeContractFields,
 } from "@alephium/web3";
-import { default as FooContractJson } from "../Foo.ral.json";
+import { default as ZagContractJson } from "../Zag.ral.json";
 import { getContractByCodeHash } from "./contracts";
 
 // Custom types for the contract
-export namespace FooTypes {
+export namespace ZagTypes {
   export type Fields = {
     owner: Address;
   };
@@ -73,8 +73,8 @@ export namespace FooTypes {
     SignExecuteMethodTable[T]["result"];
 }
 
-class Factory extends ContractFactory<FooInstance, FooTypes.Fields> {
-  encodeFields(fields: FooTypes.Fields) {
+class Factory extends ContractFactory<ZagInstance, ZagTypes.Fields> {
+  encodeFields(fields: ZagTypes.Fields) {
     return encodeContractFields(
       addStdIdToFields(this.contract, fields),
       this.contract.fieldsSig,
@@ -83,19 +83,19 @@ class Factory extends ContractFactory<FooInstance, FooTypes.Fields> {
   }
 
   getInitialFieldsWithDefaultValues() {
-    return this.contract.getInitialFieldsWithDefaultValues() as FooTypes.Fields;
+    return this.contract.getInitialFieldsWithDefaultValues() as ZagTypes.Fields;
   }
 
   consts = { ErrorCodes: { NotOwner: BigInt(0) } };
 
-  at(address: string): FooInstance {
-    return new FooInstance(address);
+  at(address: string): ZagInstance {
+    return new ZagInstance(address);
   }
 
   tests = {
     destroy: async (
       params: Omit<
-        TestContractParamsWithoutMaps<FooTypes.Fields, never>,
+        TestContractParamsWithoutMaps<ZagTypes.Fields, never>,
         "testArgs"
       >
     ): Promise<TestContractResultWithoutMaps<null>> => {
@@ -105,9 +105,9 @@ class Factory extends ContractFactory<FooInstance, FooTypes.Fields> {
 }
 
 // Use this object to test and deploy the contract
-export const Foo = new Factory(
+export const Zag = new Factory(
   Contract.fromJson(
-    FooContractJson,
+    ZagContractJson,
     "",
     "ab6dbe32a68a1207a83b6f2494e3d576cdc70fa6d3282b9f569977f12b49e577",
     []
@@ -115,21 +115,21 @@ export const Foo = new Factory(
 );
 
 // Use this class to interact with the blockchain
-export class FooInstance extends ContractInstance {
+export class ZagInstance extends ContractInstance {
   constructor(address: Address) {
     super(address);
   }
 
-  async fetchState(): Promise<FooTypes.State> {
-    return fetchContractState(Foo, this);
+  async fetchState(): Promise<ZagTypes.State> {
+    return fetchContractState(Zag, this);
   }
 
   methods = {
     destroy: async (
-      params?: FooTypes.CallMethodParams<"destroy">
-    ): Promise<FooTypes.CallMethodResult<"destroy">> => {
+      params?: ZagTypes.CallMethodParams<"destroy">
+    ): Promise<ZagTypes.CallMethodResult<"destroy">> => {
       return callMethod(
-        Foo,
+        Zag,
         this,
         "destroy",
         params === undefined ? {} : params,
@@ -142,9 +142,9 @@ export class FooInstance extends ContractInstance {
 
   transact = {
     destroy: async (
-      params: FooTypes.SignExecuteMethodParams<"destroy">
-    ): Promise<FooTypes.SignExecuteMethodResult<"destroy">> => {
-      return signExecuteMethod(Foo, this, "destroy", params);
+      params: ZagTypes.SignExecuteMethodParams<"destroy">
+    ): Promise<ZagTypes.SignExecuteMethodResult<"destroy">> => {
+      return signExecuteMethod(Zag, this, "destroy", params);
     },
   };
 }

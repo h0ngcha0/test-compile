@@ -2,6 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export * from "./Foo";
 export * from "./TokenFaucet";
+export * from "./Zag";
 export * from "./scripts";
